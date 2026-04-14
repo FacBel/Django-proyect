@@ -1,15 +1,5 @@
-# Entorno virtual
 venv/
-Lib/
-Scripts/
-Include/
-
-# Python
 __pycache__/
 *.pyc
-
-# Django
 db.sqlite3
-
-# Entorno
 .env
