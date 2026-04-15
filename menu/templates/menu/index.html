@@ -6,8 +6,16 @@
 <body>
 
     <h1> Menú de Pizzas</h1>
+        {% for pizza in pizzas %}
+        <div>
+            <h2>{{ pizza.nombre }}</h2>
+            <p>Precio: ${{ pizza.precio }}</p>
+        </div>
+        <hr>
+        {% empty %}
+        <p>No hay pizzas cargadas</p>
+        {% endfor %}
 
     <a href="{% url 'inicio' %}">Volver al inicio</a>
-
 </body>
 </html>
