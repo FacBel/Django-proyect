@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menú</title>
+</head>
+<body>
+
+    <form method="post">
+
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Editar Pizza</button>
+    </form>
+
+    
+</body>
+</html>

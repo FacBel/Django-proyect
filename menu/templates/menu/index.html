@@ -4,13 +4,15 @@
     <title>Menú</title>
 </head>
 <body>
-
     <h1> Menú de Pizzas</h1>
+    <a href="{%url 'crear_pizza'%}">Nueva Pizza</a>
         {% for pizza in pizzas %}
         <div>
             <h2>{{ pizza.nombre }}</h2>
             <h3>Categoria: {{ pizza.Categoria }}</h3>
             <p>Precio: ${{ pizza.precio }}</p>
+            <a href="{%url 'editar_pizza' pizza.id%}">Editar Pizza</a>
+            <a href="{% url 'eliminar_pizza' pizza.id%}">BORRAR</a>
         </div>
         <hr>
         {% empty %}

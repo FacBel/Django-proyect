@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Pizza
-from .forms import CategoriaForm
+from .forms import PizzaForm
 
 def menu(request):
     pizzas = Pizza.objects.all()
@@ -9,12 +9,35 @@ def menu(request):
         "pizzas": pizzas
     })
 
-def crear_categoria(request):
+def crear_pizza(request):
     if request.method == "POST":
-        form = CategoriaForm(request.POST)
+        form = PizzaForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect("menu")
     else:
-        form = CategoriaForm()
-    return render(request, "menu/crear_categoria.html", {"form":form})
+        form = PizzaForm()
+    return render(request, "menu/crear_pizza.html", {"form":form})
+
+def editar_pizza(request, id):
+
+    pizza = get_object_or_404(Pizza, id=id)
+
+    if request.method == "POST":
+        form = PizzaForm(request.POST, instance=pizza)
+        if form.is_valid():
+            form.save()
+            return redirect("menu")
+    else:
+        form = PizzaForm(instance=pizza)
+    return render(request, "menu/editar_pizza.html", {"form":form})
+
+def eliminar_pizza(request, id):
+
+    pizza = get_object_or_404(Pizza, id=id)
+
+    if request.method == "POST":
+        pizza.delete() # Podria ser borrado logico.
+        return redirect("menu")
+    
+    return render(request, "menu/borrar_pizza.html", {"pizza":pizza})

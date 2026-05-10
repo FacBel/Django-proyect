@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menú</title>
+</head>
+<body>
+
+    <form method="post">
+
+        {% csrf_token %}
+        <div>¿Estas seguro de eliminar la siguiente pizza?</div>
+        <h3>
+            {{ pizza }}
+        </h3>
+        <button type="submit">Si, eliminar</button>
+        <a href="{% url 'menu' %}">No, volver.</a>
+    </form>
+
+    
+</body>
+</html>
