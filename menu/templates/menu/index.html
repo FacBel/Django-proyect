@@ -1,24 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Menú</title>
+{% load static %}
+    <meta charset="UTF-8">
+    <title>Menú - Rocket Pizza</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <h1> Menú de Pizzas</h1>
-    <a href="{%url 'crear_pizza'%}">Nueva Pizza</a>
-        {% for pizza in pizzas %}
-        <div>
-            <h2>{{ pizza.nombre }}</h2>
-            <h3>Categoria: {{ pizza.Categoria }}</h3>
-            <p>Precio: ${{ pizza.precio }}</p>
-            <a href="{%url 'editar_pizza' pizza.id%}">Editar Pizza</a>
-            <a href="{% url 'eliminar_pizza' pizza.id%}">BORRAR</a>
+    <header class="main-header">
+        <div class="header-content">
+            <h1>Nuestro Menú</h1>
         </div>
-        <hr>
-        {% empty %}
-        <p>No hay pizzas cargadas</p>
-        {% endfor %}
+    </header>
 
-    <a href="{% url 'inicio' %}">Volver al inicio</a>
+    <main class="container">
+        <div class="menu-actions">
+            <a href="{%url 'crear_pizza'%}" class="btn btn-success">Añadir Nueva Pizza</a>
+        </div>
+        
+        <div class="pizza-grid">
+            {% for pizza in pizzas %}
+            <div class="pizza-card">
+                <div class="pizza-header">
+                    <h2>{{ pizza.nombre }}</h2>
+                    <span class="category-badge">{{ pizza.Categoria }}</span>
+                </div>
+                <div class="pizza-body">
+                    <p class="price">${{ pizza.precio }}</p>
+                </div>
+                <div class="card-actions">
+                    <a href="{%url 'editar_pizza' pizza.id%}" class="btn btn-secondary">Editar</a>
+                    <a href="{% url 'eliminar_pizza' pizza.id%}" class="btn btn-danger">Borrar</a>
+                </div>
+            </div>
+            {% empty %}
+            <div class="empty-state">
+                <p>Aún no hay pizzas cargadas en nuestro menú.</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="back-link">
+            <a href="{% url 'inicio' %}" class="btn btn-outline">Volver al inicio</a>
+        </div>
+    </main>
 </body>
 </html>

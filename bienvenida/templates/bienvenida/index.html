@@ -1,13 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+{% load static %}
+    <meta charset="UTF-8">
     <title>Rocket Pizza</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+    <header class="main-header">
+        <div class="header-content">
+            <h1>Rocket Pizza</h1>
+            <p>La pizzería con más sabor de la galaxia</p>
+        </div>
+    </header>
 
-    <h1>Bienvenido a Rocket Pizza</h1>
-
-    <a href="{% url 'menu' %}">Ir al menú</a>
-
+    <main class="container home-container">
+        <div class="welcome-card">
+            <h2>¿Listo para ordenar?</h2>
+            <p>Nuestras pizzas están hechas a mano en horno de barro con los ingredientes más frescos.</p>
+            <a href="{% url 'menu' %}" class="btn btn-primary btn-large">Ver Nuestro Menú</a>
+        </div>
+    </main>
 </body>
 </html>

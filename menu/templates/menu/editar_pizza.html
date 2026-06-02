@@ -1,18 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Menú</title>
+{% load static %}
+    <meta charset="UTF-8">
+    <title>Editar Pizza - Rocket Pizza</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+    <header class="main-header">
+        <div class="header-content">
+            <h1>Editar Pizza</h1>
+            <p>Modificá los detalles de esta especialidad</p>
+        </div>
+    </header>
 
-    <form method="post">
-
-        {% csrf_token %}
-        {{ form.as_p }}
-
-        <button type="submit">Editar Pizza</button>
-    </form>
-
-    
+    <main class="container">
+        <form method="post" class="styled-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                <a href="{% url 'menu' %}" class="btn btn-outline">Cancelar</a>
+            </div>
+        </form>
+    </main>
 </body>
 </html>

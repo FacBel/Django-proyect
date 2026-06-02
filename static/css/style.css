@@ -1,0 +1,312 @@
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0; /* Removed padding, handled by container now */
+    background-color: #fcf4ec; /* Warmer, softer background */
+    color: #3e2723; /* Dark brown for text */
+}
+
+h1, h2, h3 {
+    margin-top: 0;
+    color: #bf360c; /* Deep warm red/orange */
+}
+
+a {
+    color: #bf360c;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a:hover {
+    color: #870000;
+}
+
+/* Header */
+.main-header {
+    background-color: #bf360c;
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    border-bottom: 4px solid #ffcc80; /* Dough color accent */
+}
+
+.main-header h1 {
+    color: white;
+    margin: 0 0 0.5rem 0;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+}
+
+.main-header p {
+    margin: 0;
+    font-size: 1.2rem;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* Layout Containers */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+}
+
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+}
+
+.welcome-card {
+    background: white;
+    padding: 3rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    border-top: 6px solid #bf360c;
+    max-width: 600px;
+}
+
+.welcome-card p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    border: none;
+    font-size: 1rem;
+}
+
+.btn-large {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+}
+
+.btn-primary {
+    background-color: #bf360c;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #870000;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-success {
+    background-color: #2e7d32; /* Basil green */
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #1b5e20;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #f57c00; /* Orange */
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #e65100;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #d32f2f;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #b71c1c;
+    color: white;
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid #ccc;
+    color: #555;
+}
+
+.btn-outline:hover {
+    border-color: #888;
+    color: #333;
+}
+
+.menu-actions {
+    margin-bottom: 2rem;
+    text-align: right;
+}
+
+.back-link {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+/* Pizza Grid Menu */
+.pizza-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.pizza-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s;
+    border: 1px solid #eee;
+}
+
+.pizza-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.pizza-header {
+    background-color: #fdf8f5;
+    padding: 20px;
+    border-bottom: 2px dashed #ffcc80;
+}
+
+.pizza-header h2 {
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+}
+
+.category-badge {
+    display: inline-block;
+    background-color: #ffcc80;
+    color: #bf360c;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.pizza-body {
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.pizza-body .price {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2e7d32;
+    margin: 0;
+}
+
+.card-actions {
+    padding: 15px 20px;
+    background-color: #f9f9f9;
+    display: flex;
+    gap: 10px;
+    border-top: 1px solid #eee;
+}
+
+.card-actions .btn {
+    flex: 1;
+    padding: 8px;
+    font-size: 0.9rem;
+}
+
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    background: white;
+    border-radius: 10px;
+    color: #777;
+    font-size: 1.2rem;
+}
+
+/* Forms */
+.styled-form {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    max-width: 500px;
+    margin: 0 auto;
+    border-top: 6px solid #bf360c;
+}
+
+.danger-form {
+    border-top-color: #d32f2f;
+}
+
+.styled-form p {
+    margin-bottom: 20px;
+}
+
+.styled-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #444;
+}
+
+.styled-form input[type="text"],
+.styled-form input[type="number"],
+.styled-form select,
+.styled-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.styled-form input:focus,
+.styled-form select:focus,
+.styled-form textarea:focus {
+    outline: none;
+    border-color: #bf360c;
+    box-shadow: 0 0 0 3px rgba(191, 54, 12, 0.1);
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.form-actions .btn {
+    flex: 1;
+}
+
+.warning-box {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.highlight-pizza {
+    color: #d32f2f;
+    font-size: 1.8rem;
+    margin: 15px 0;
+    padding: 15px;
+    background-color: #ffebee;
+    border-radius: 6px;
+}
