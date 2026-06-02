@@ -1,0 +1,28 @@
+<html lang="es">
+<head>
+{% load static %}
+    <meta charset="UTF-8">
+    <title>Registrarse - Rocket Pizza</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <h1>Registrarse</h1>
+            <p>Crea tu cuenta para continuar</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <form method="post" class="styled-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Registrarse</button>
+                <a href="{% url 'inicio' %}" class="btn btn-outline">Volver al Inicio</a>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

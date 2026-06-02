@@ -1,6 +1,24 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Pizza
 from .forms import PizzaForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login 
+from django.contrib.auth.forms import UserCreationForm
+
+def register(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect("menu")
+    else:
+        form = UserCreationForm()
+    return render(request, "registration/register.html", {"form":form})
+
+
+
+
 
 def menu(request):
     pizzas = Pizza.objects.all()
@@ -9,6 +27,7 @@ def menu(request):
         "pizzas": pizzas
     })
 
+@login_required
 def crear_pizza(request):
     if request.method == "POST":
         form = PizzaForm(request.POST)
@@ -19,6 +38,7 @@ def crear_pizza(request):
         form = PizzaForm()
     return render(request, "menu/crear_pizza.html", {"form":form})
 
+@login_required
 def editar_pizza(request, id):
 
     pizza = get_object_or_404(Pizza, id=id)
@@ -32,6 +52,7 @@ def editar_pizza(request, id):
         form = PizzaForm(instance=pizza)
     return render(request, "menu/editar_pizza.html", {"form":form})
 
+@login_required
 def eliminar_pizza(request, id):
 
     pizza = get_object_or_404(Pizza, id=id)

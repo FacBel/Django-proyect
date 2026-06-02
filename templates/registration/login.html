@@ -1,0 +1,29 @@
+
+<html lang="es">
+<head>
+{% load static %}
+    <meta charset="UTF-8">
+    <title>Iniciar Sesión - Rocket Pizza</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <h1>Iniciar Sesión</h1>
+            <p>Accede a tu cuenta para continuar</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <form method="post" class="styled-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                <a href="{% url 'inicio' %}" class="btn btn-outline">Volver al Inicio</a>
+            </div>
+        </form>
+    </main>
+</body>
+</html>
