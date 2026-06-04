@@ -17,15 +17,20 @@
 
     <main class="container home-container">
         <div class="welcome-card">
-            <h2> Hola {{ user.username }}, veamos la lista de las pizzas </h2> 
-            <p>Nuestras pizzas están hechas a mano en horno de barro con los ingredientes más frescos.</p>
+            {% if user.is_authenticated and user.foto %}
+                <img src="{{ user.foto.url }}"
+                    alt="Foto de perfil"
+                    class="foto-perfil">
+            {% endif %}
+            <h2> Bienvenido {{ user.username }} </h2> 
+            <p>Veamos las pizzas disponibles</p>
             <a href="{% url 'menu' %}" class="btn btn-primary btn-large">Ver Nuestro Menú</a>
 
             {% if not user.is_authenticated %} 
+             <a href="{% url 'login' %}" class="btn btn-outline btn-large">Iniciar Sesión</a>
             
-            <a href="{% url 'register' %}" class="btn btn-outline btn-large">¿No tienes cuenta? Regístrate</a>
+             <a href="{% url 'register' %}" class="btn btn-outline btn-large">¿No tienes cuenta? Regístrate</a>
             
-            <a href="{% url 'login' %}" class="btn btn-outline btn-large">Iniciar Sesión</a>
             {% endif %}
             
             {% if user.is_authenticated %} 

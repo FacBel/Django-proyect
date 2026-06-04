@@ -16,7 +16,9 @@
 
     <main class="container">
         <div class="menu-actions">
-            <a href="{%url 'crear_pizza'%}" class="btn btn-success">Añadir Nueva Pizza</a>
+            {% if user.is_authenticated %}
+                <a href="{%url 'crear_pizza'%}" class="btn btn-success">Añadir Nueva Pizza</a>
+            {% endif %}
         </div>
         
         <div class="pizza-grid">
@@ -30,8 +32,10 @@
                     <p class="price">${{ pizza.precio }}</p>
                 </div>
                 <div class="card-actions">
-                    <a href="{%url 'editar_pizza' pizza.id%}" class="btn btn-secondary">Editar</a>
-                    <a href="{% url 'eliminar_pizza' pizza.id%}" class="btn btn-danger">Borrar</a>
+                    {% if user.is_authenticated %}
+                        <a href="{%url 'editar_pizza' pizza.id%}" class="btn btn-secondary">Editar</a>
+                        <a href="{% url 'eliminar_pizza' pizza.id%}" class="btn btn-danger">Borrar</a>
+                    {% endif %}
                 </div>
             </div>
             {% empty %}
